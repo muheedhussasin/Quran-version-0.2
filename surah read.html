@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صوتُ القرآن</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: #ffffff;
+      color: rgb(0, 0, 0);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    nav {
+      background: #121212;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .navbars {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 0.1em;
+    }
+    .nav-links ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+    }
+    .nav-links ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.25rem;
+      transition: background 0.3s ease;
+    }
+    .nav-links ul li a:hover {
+      background-color: #444;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 4px;
+    }
+
+    @media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #121212;
+    margin-top: 1rem;
+    position: absolute; /* ADD THIS */
+    top: 60px; /* adjust height according to nav */
+    left: 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links ul li {
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+    /* @media (max-width: 768px) {
+      .navbars {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        flex: 1;
+        text-align: center;
+        order: 2;
+      }
+      .hamburger {
+        display: flex;
+        order: 1;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        background: #121212;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links ul {
+        flex-direction: column;
+        width: 100%;
+      }
+      .nav-links ul li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+    } */
+         #blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+      direction: rtl;
+    }
+
+    .blog-card {
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .blog-card:hover {
+      transform: scale(1.03);
+      background-color: #f0f8ff;
+    }
+
+    #surah-detail {
+      margin-top: 1rem;
+      padding: 1rem;
+    }
+
+    #surah-title h2 {
+      margin-bottom: 1rem;
+    }
+
+    #ayah-list p {
+      background: #fff;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    #surah-detail button {
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }   
+    
+    .surahs div {
+  background: #f0efef;
+  padding: 0.5rem 0.3rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  max-width: none;
+  text-align: center;
+  font-size: 0.9rem;
+  direction: ltr; 
+}
+
+.surahs div:hover {
+  background: #d4d4d4;
+}
+
+
+.search-container {
+  margin: 1rem auto;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.search-container input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+  border-color: #555;
+}
+
+.search-container button {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 0 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.search-container button:hover {
+  background: #555;
+}
+
+.search-container button i {
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-container {
+    width: 90%;
+  }
+}
+
+        </style>
+</head>
+<body>
+    
+  <nav>
+    <div class="navbars">
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="logo"><a href="#">Sout-Ul-Quran</a></div>
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <li><a href="audio.html">Quran Audio Player</a></li>
+          <li><a href="surah read.html">Read Quran Surah</a></li>
+          <li><a href="Juzz read.html">Read Para 1 to 30</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+   <div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search Surah No Wise...">
+  <button id="searchBtn"><i class="fas fa-search"></i></button>
+</div>
+ 
+ <!-- Hero slider (optional if you use) -->
+  <div class="hero-slider obj-width" id="hero-slider">
+    <!-- Hero content -->
+  </div>
+
+  <!-- Main card container -->
+  <main class="obj-width" id="blog-container">
+    <!-- Cards from API will load here -->
+  </main>
+
+  <!-- Surah detail section -->
+  <section class="obj-width" id="surah-detail" style="display:none;">
+    <button onclick="goBack()">⬅ واپس جائیں</button>
+    <div id="surah-title"></div>
+    <div id="ayah-list"></div>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+    }
+  </script>
+  
+  <script src="index.js"></script>
+
+</body>
+</html>

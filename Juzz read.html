@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- existing head stuff -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <title>Mobile Responsive Quran Para Cards</title>
+  <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: #fff;
+  color: #000;
+  overflow-x: hidden;
+}
+
+nav {
+  background: #121212;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.navbars {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+}
+
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+
+.nav-links ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.25rem;
+  transition: background 0.3s;
+}
+
+.nav-links ul li a:hover {
+  background: #444;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column; 
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #121212;
+    margin-top: 1rem;
+    position: absolute; /* ADD THIS */
+    top: 60px; /* adjust height according to nav */
+    left: 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links ul li {
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+
+/* @media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #121212;
+    margin-top: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links ul li {
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+} */
+
+    /* Cards */
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  justify-content: center;
+  direction: rtl;
+}
+
+    a.card {
+       width: calc(33.333% - 0.67rem);
+      border-radius: 0.5rem;
+      width: 300px;
+      height: 450px;
+      background: #333;
+      box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      position: relative;
+    }
+
+    a.card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card__background {
+      height: 100%;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Responsive Cards */
+    @media (max-width: 768px) {
+      a.card {
+        width: calc(50% - 1rem);
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      a.card {
+        width: 100%;
+      }
+    }
+
+    @media (hover: none) {
+      a.card:hover {
+        transform: none;
+      }
+
+      .card__background {
+        transform: none;
+      }
+ @media (max-width: 768px) {
+  a.card {
+    width: calc(50% - 0.5rem);
+    height: 300px;
+  }
+}
+}
+
+.surahs div {
+  background: #f0efef;
+  padding: 0.5rem 0.3rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  max-width: none;
+  text-align: center;
+  font-size: 0.9rem;
+  direction: ltr; 
+}
+
+.surahs div:hover {
+  background: #d4d4d4;
+}
+
+
+.search-container {
+  margin: 1rem auto;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.search-container input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input:focus {
+  border-color: #555;
+}
+
+.search-container button {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 0 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.search-container button:hover {
+  background: #555;
+}
+
+.search-container button i {
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-container {
+    width: 90%;
+  }
+}
+
+    
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="navbars">
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="logo"><a href="#">Sout-Ul-Quran</a></div>
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <li><a href="audio.html">Quran Audio Player</a></li>
+          <li><a href="surah read.html">Read Quran Surah</a></li>
+          <li><a href="Juzz read.html">Read Para 1 to 30</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    <!-- <div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search Juzz No...">
+  <button id="searchBtn"><i class="fas fa-search"></i></button>
+</div> -->
+
+  <main class="wrapper">
+       <a href="https://drive.google.com/file/d/1GWi0-ekDIEwnIjQBRzwhVsYQufI_Nx8I/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images juzz/1-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/18AAfMMawuc3Sn0ikbgzStv4OA4IVtjU3/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/2-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1AGNJT7lesi3k0jM26wfQVMdh3Uky_DLF/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/3-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1IyTpjQbFbw7sy9rgUcWnwhwhhZ-V9UqJ/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/4-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1qFYeRtWkrpV1y-xwy8jas7qn5CGoUIra/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/5-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1lcVZPNNzI_2ZbdOG1LMq8wQLattmNYqR/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style ="background-image: url(' images/images\ juzz/6-min.jpg')"    
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1J5zSTpyOgu7i_5GAfpIiWWovHKe4Z9s-/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/7-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1G3IUMu_riwsmgzewPhxpEznUhryzOssl/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/8-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1zOYBY080s4oldOumlFaw3-LWUXBu1MmL/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/9-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1kKzQrX31SUpHSNEzklp3zDC1MhxQijeF/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/10-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1GHfbcOCZzPhrhy-EyyMJ6Q8GUkJiXt2o/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/11-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1Bhi-kK4LugG_NoGzYZZeot-IwNSCLzb8/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/12-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1sNgHmI-5Gy2FFBCyJ7wm8Qi1ss-yx9sl/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/13-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/10nBU4zJm5jyzvwqwjJDyJojqHADl_ZXw/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/14-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1vhxekHqyqStq_asFa5lYAq1uW4Zuiik2/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/15-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1qXSx_huolSUCY5lgV04wMv02KuEndQmo/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/16-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1_K2UF6sx0IzJFD8JyU_HVj50WlhhPftE/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/17-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1k6bEHeXU060Qt_lvxscfq3k0101-6ZPZ/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/18-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1dk7hN9uE-koIawFYCyr3BBQ0Viq0VaHI/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/19-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/104Li0Jo32ghRI1s32eUGjBeMxCoos9-5/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/20-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1V2V8K-kc7ZoQozv1dp19VyHzZxZwNJeh/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/21-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1hgWG7pJ1AsAlxQRDdSEDB1oy7MsEdhpz/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/22-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/16gXblZqQDNnMy8zMaJB1Sc6gCEZeSxlO/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/23-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1KkSc4ud5z0i31rhkt38033m0T89d4P6X/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/24-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1Auq-8h0OvY8x3K6NWSUkdG_CXfVqFyWj/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/25-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1jfx29QEk9jG2yOv6cc9cD32GuOd1hSkX/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/26-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1RdrRof1U_qRV0FShQdSuZjFbfLzsQWZw/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/27-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1QhUSgSThxoQ6sGhUANxL1fOp96E3Hr8h/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/28-min.jpg')"
+      ></div>
+    </a>
+    <a href="https://drive.google.com/file/d/1TyfnetBFpOcA9SVhmOk9yN8-uozELysq/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/29-min.jpg')"
+      ></div>
+    </a>
+        <a href="https://drive.google.com/file/d/1gC1AgDrUX6xSmFU7kiXaBaivDXkdMi-K/view?usp=sharing" class="card" tabindex="0" aria-label="Open PDF for Para 1">
+      <div
+        class="card__background"
+        style="background-image: url('images/images\ juzz/30-min.jpg')"
+      ></div>
+    </a>
+
+  </main>
+  
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("active");
+    }
+  </script>
+
+  <script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+
+const searchInput = document.getElementById('searchInput');
+const cards = document.querySelectorAll('.card');
+
+searchInput.addEventListener('input', function() {
+  const query = searchInput.value.toLowerCase();
+
+  cards.forEach(card => {
+    const ariaLabel = card.getAttribute('aria-label').toLowerCase();
+    if (ariaLabel.includes(query)) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+});
+</script>
+
+
+
+  <script src="index.js"></script>
+</body>
+</html>
+
